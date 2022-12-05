@@ -8,8 +8,10 @@
 </head>
 <body>
 	<form name="frmLogin" method="post" action="login" encType="utf-8">
-	아이디: <input type="text" name="id"><br>
-	비밀번호:	<input type="password" name="pwd"><br>
+	아이디: <input type="text" id= "uid" name=uid"><br/>
+	비밀번호:	<input type="password" id="pwd" name="pwd"><br>
+	<input type="submit" value="로그인">
+    <input type="reset" value="다시입력">
 	</form>
 </body>
 </html>
