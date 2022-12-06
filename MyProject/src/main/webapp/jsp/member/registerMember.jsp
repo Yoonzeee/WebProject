@@ -7,6 +7,8 @@
 <title>registerMember</title>
 </head>
 <body>
+<h2>회원 가입</h2>
+
 	<form name="frmRegister" method="post" action="register" encType="utf-8">
 	아이디: <input type="text" id="uid" name="uid"> <input type="button" value="중복확인" id="dupUidCheckButton"><br/>
 	<div id="uid_valid_msg"></div>
@@ -17,6 +19,8 @@
 	이메일: <input type="text" id="email" name="email"><br>
 	<input type="button" value="회원가입" id="insertButton">
 	</form>
+	
+	
 	<script type="text/javascript">
 	let dupUidCheckButton = document.querySelector("#dupUidCheckButton");
 	dupUidCheckButton.onclick = () => {
@@ -34,7 +38,6 @@
 	}
 	
 	async function dupUidCheck() {
-	
 		let response = await fetch('/MyProject/member/dupUidCheck?uid=' + uid.value);
 		let jsonResult = await response.json();
 		if (jsonResult.status == false) {
@@ -56,7 +59,6 @@
 			} else {
 				alert("잠시 대기...");
 				//uid=user10&pwd=123&name=홍길동
-				/*
 				fetch('/pro14/member/insert?uid=' + uid.value + "&pwd=" + pwd.value + "&" + "name=" + name.value)
 				.then(response => response.json())
 				.then(jsonResult => {
@@ -67,7 +69,7 @@
 						location.href = jsonResult.url;
 					}
 				});
-				*/
+				
 				let param = {
 					"uid" : uid.value,
 					"pwd" : pwd.value,

@@ -58,7 +58,6 @@ async function jsDan(event, dan) {
     <br/>
 
 <script type="text/javascript">
-		//주석 
       // 「WebSocketEx」는 프로젝트 명
       // 「websocket」는 호스트 명
       // WebSocket 오브젝트 생성 (자동으로 접속 시작한다. - onopen 함수 호출)
@@ -145,7 +144,6 @@ async function dupUidCheck() {
 	}
 	let uid_valid_msg = document.querySelector("#uid_valid_msg");
 	uid_valid_msg.innerHTML =  "[" + uid.value + "]" + jsonResult.message;
-	
 }
 
 function jsInsert () {
