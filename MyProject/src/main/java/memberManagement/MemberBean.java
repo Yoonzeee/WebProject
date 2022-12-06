@@ -1,4 +1,4 @@
-package pro14;
+package memberManagement;
 
 import java.sql.Date;
 
@@ -9,7 +9,6 @@ public class MemberBean {
 	private String phone;
 	private String email;
 	private Date joinDate;
-	
 	
 	public MemberBean(String uid, String pwd, String name, String phone, String email, Date joinDate) {
 		super();

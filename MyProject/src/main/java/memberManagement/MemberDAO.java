@@ -1,4 +1,4 @@
-package pro14;
+package memberManagement;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,15 +37,15 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				MemberBean member = new MemberBean(
+				MemberBean bean = new MemberBean(
 						rs.getString("uid"),	
 						rs.getString("pwd"),	
 						rs.getString("name"),
 						rs.getString("phone"),
 						rs.getString("email"),	
 						rs.getDate("joinDate"));
-				System.out.println(member);
-				list.add(member);
+				System.out.println(bean);
+				list.add(bean);
 			}
 			rs.close();
 			pstmt.close();
@@ -56,7 +56,7 @@ public class MemberDAO {
 		return list;
 	}
 
-	public void addMember(MemberBean member) {
+	public void registerMember(MemberBean bean) {
 		try {
 			Connection con = dataFactory.getConnection();
 			String query = "insert into web_member";
@@ -64,11 +64,11 @@ public class MemberDAO {
 			query += " values(?,?,?,?,?)";
 			System.out.println("prepareStatememt: " + query);
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, member.getUid());
-			pstmt.setString(2, member.getPwd());
-			pstmt.setString(3, member.getName());
-			pstmt.setString(4, member.getPhone());
-			pstmt.setString(5, member.getEmail());
+			pstmt.setString(1, bean.getUid());
+			pstmt.setString(2, bean.getPwd());
+			pstmt.setString(3, bean.getName());
+			pstmt.setString(4, bean.getPhone());
+			pstmt.setString(5, bean.getEmail());
 			pstmt.executeUpdate();
 			pstmt.close();
 		} catch (Exception e) {

@@ -17,6 +17,8 @@
 	<input type="button" value="회원가입" id="insertButton">
 	</form>
 	
-
+	<script>
+	
+	</script>
 </body>
 </html>
