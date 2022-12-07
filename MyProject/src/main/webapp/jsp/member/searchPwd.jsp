@@ -15,7 +15,7 @@ String pwd = (String)session.getAttribute("pwd");
 <h2 class="header"><%=uid%>님 안녕하세요~~~!!
 	</h2>
 	<h2>비밀번호 찾기</h2>
-	<form name="frmList" method="get" action="<c:url value='list'/>" encType="utf-8">
+	<form name="frmSearchPwd" method="get" action="<c:url value='list'/>" encType="utf-8">
 		<table border="1">
 	<thead>
 		<tr>
