@@ -44,28 +44,40 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
+		
 		MemberDAO dao = new MemberDAO();
-		List<MemberBean> list = dao.listMembers();
-
-		for (int i=0; i<list.size(); i++) {
-			MemberBean memberBean = list.get(i);
-			String uid = memberBean.getUid();
-			String pwd = memberBean.getPwd();
-			String name = memberBean.getName();
-			String phone = memberBean.getPhone();
-			String email = memberBean.getEmail();
-			Date joinDate = memberBean.getJoinDate();
-			
+//		PrintWriter out = response.getWriter();
+		
+		String uid = request.getParameter("uid");
+		String pwd = request.getParameter("pwd");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		dao.registerMember(uid, pwd, name, phone, email);
+		
+		if (!uid.equals("uid")) {
+			System.out.print("회원가입 되었습니다.");
+			response.sendRedirect("jsp/member/loginForm.jsp");
+		} else {
+			System.out.print("이미 존재하는 아이디입니다.");
+			response.sendRedirect("jsp/member/registerMember.jsp");
 		}
+		
+//		if (uid.equals("uid")) {
+//			out.print("이미 존재하는 아이디입니다.");
+//			response.sendRedirect("jsp/member/registerMember.jsp");
+//		} else {
+//			out.print("회원가입 되었습니다.");
+//			response.sendRedirect("jsp/member/loginForm.jsp");
+//		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

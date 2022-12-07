@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +10,11 @@
 <body>
 <h2>로그인</h2>
 
-	<form name="frmLogin" method="post" action="login" encType="utf-8">
+	<form name="frmLogin" method="post" action="<c:url value='/login'/>" encType="utf-8">
 	아이디: <input type="text" id= "uid" name="uid"><br/>
 	비밀번호:	<input type="password" id="pwd" name="pwd"><br>
 	<input type="submit" value="로그인">
+	<!-- <input type="button" onClick="location.href='registerMember.jsp'" value="회원가입"/> -->
     <input type="reset" value="다시입력">
 	</form>
 	

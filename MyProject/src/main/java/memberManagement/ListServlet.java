@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ListServlet
  */
-@WebServlet("memberManagement/list")
+@WebServlet("/memberManagement/list")
 public class ListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
