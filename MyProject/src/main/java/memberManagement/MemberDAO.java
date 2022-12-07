@@ -260,6 +260,37 @@ public class MemberDAO {
 		return list;
 	}
 
+	public List<MemberBean> myPage(String uid) {
+		List<MemberBean> list = new ArrayList<>();
+		try {
+			// connDB();
+			conn = dataFactory.getConnection();
+			String query = "select * from web_member where uid=?";
+			System.out.println("가입한 회원 목록 확인 시작~");
+			System.out.println("prepareStatememt: " + query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, uid);
+			
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				MemberBean bean = new MemberBean(rs.getString("uid"), rs.getString("pwd"), rs.getString("name"),
+						rs.getString("phone"), rs.getString("email"), rs.getDate("joinDate"));
+				System.out.println(bean);
+				list.add(bean);
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return list;
+	}
+
 
 //	// 뭘봐?
 //	public MemberBean viewMember(String uid) {

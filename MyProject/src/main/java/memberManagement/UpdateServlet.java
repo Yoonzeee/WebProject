@@ -58,6 +58,8 @@ public class UpdateServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		MemberBean bean = dao.updateMember(uid, pwd, name, phone, email);
 		
+		response.sendRedirect("jsp/member/updateMember.jsp");
+		
 		// if?
 	}
 

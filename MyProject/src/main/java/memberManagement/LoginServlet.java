@@ -48,7 +48,6 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		
 		MemberDAO dao = new MemberDAO();
 		PrintWriter out = response.getWriter();
 		
@@ -66,15 +65,15 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("name", bean.getName());
 				
 				// 회원수정
-//				response.sendRedirect("jsp/member/updateMember.jsp");
+				response.sendRedirect("jsp/member/updateMember.jsp");
 //				// 회원탈퇴
 //				response.sendRedirect("jsp/member/deleteMember.jsp");
 //				// 가입한 회원 목록
 //				response.sendRedirect("list");
 				// 비밀번호 찾기
-				response.sendRedirect("jsp/member/searchPwdForm.jsp");
+//				response.sendRedirect("jsp/member/searchPwdForm.jsp");
 //				// 마이페이지
-//				response.sendRedirect("만들면 여기에 넣어");
+//				response.sendRedirect("myPage");
 //				out.print("안녕하세요 " + uid +" 님!!!");
 			} else {
 				response.sendRedirect("jsp/member/loginForm.jsp");

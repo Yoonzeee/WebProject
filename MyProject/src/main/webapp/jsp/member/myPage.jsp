@@ -10,20 +10,18 @@ String uid = (String) session.getAttribute("uid");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>listMember</title>
+<title>myPage</title>
 </head>
 <body>
-	<h2 class="header"><%=uid%>님 안녕하세요~~~!!
+<h2 class="header">${memberBean.uid}님 안녕하세요~~~!!
 	</h2>
-	<h2>회원목록</h2>
+	<h2>마이페이지</h2>
 	<form name="frmList" method="get" action="<c:url value='list'/>"
 		encType="utf-8">
 		<table border="1">
 			<thead>
 				<tr>
-					<th>번호</th>
 					<th>아이디</th>
-					<th>비밀번호</th>
 					<th>이름</th>
 					<th>핸드폰번호</th>
 					<th>이메일</th>
@@ -35,13 +33,12 @@ String uid = (String) session.getAttribute("uid");
 				<c:set var="i" value="1" />
 				<c:set var="i">1</c:set>
 
-				<c:forEach var="memberBean" items="${listMembers}" varStatus="listMembersStatus">
+				<c:forEach var="memberBean" items="${myPage}"
+					varStatus="listMembersStatus">
 					<tr
 						class="${listMembersStatus.count % 2 == 0 ? 'trEven' : 'trOdd'}">
 
-						<td>${listMembersStatus.count}</td>
 						<td>${memberBean.uid}</td>
-						<td>${memberBean.pwd}</td>
 						<td>${memberBean.name}</td>
 						<td>${memberBean.phone}</td>
 						<td>${memberBean.email}</td>
