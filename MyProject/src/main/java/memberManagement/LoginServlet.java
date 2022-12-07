@@ -64,8 +64,18 @@ public class LoginServlet extends HttpServlet {
 			if(bean != null && bean.getUid() != null) {
 				session.setAttribute("uid", bean.getUid());
 				session.setAttribute("name", bean.getName());
-				response.sendRedirect("jsp/member/updateMember.jsp");
-				out.print("안녕하세요 " + uid +" 님!!!");
+				
+				// 회원수정
+//				response.sendRedirect("jsp/member/updateMember.jsp");
+//				// 회원탈퇴
+//				response.sendRedirect("jsp/member/deleteMember.jsp");
+//				// 가입한 회원 목록
+//				response.sendRedirect("list");
+				// 비밀번호 찾기
+				response.sendRedirect("jsp/member/searchPwdForm.jsp");
+//				// 마이페이지
+//				response.sendRedirect("만들면 여기에 넣어");
+//				out.print("안녕하세요 " + uid +" 님!!!");
 			} else {
 				response.sendRedirect("jsp/member/loginForm.jsp");
 			}

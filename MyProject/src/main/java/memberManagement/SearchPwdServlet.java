@@ -1,5 +1,6 @@
 package memberManagement;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,20 +30,20 @@ public class SearchPwdServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 	}
-
-	/**
-	 * @see Servlet#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		MemberDAO dao = new MemberDAO();
+		
+		String uid = request.getParameter("uid");
+		String phone = request.getParameter("phone");
+		
+		request.setAttribute("searchPwd", dao.searchPwd(uid, phone));
+
+		RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/member/searchPwd.jsp");
+		dispatch.forward(request, response);
 	}
 
 	/**

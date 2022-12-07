@@ -1,12 +1,15 @@
 package memberManagement;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * Servlet implementation class DeleteServlet
@@ -42,7 +45,18 @@ public class DeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		MemberDAO dao = new MemberDAO();
+		PrintWriter out = response.getWriter();
+		
+		String uid = request.getParameter("uid");
+		String pwd = request.getParameter("pwd");
+		String pwd1= request.getParameter("pwd1");
+		MemberBean bean = dao.deleteMember(uid, pwd, pwd1);
+		
 	}
 
 	/**

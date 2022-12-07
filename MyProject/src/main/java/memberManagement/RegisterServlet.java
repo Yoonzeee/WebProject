@@ -48,7 +48,6 @@ public class RegisterServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		MemberDAO dao = new MemberDAO();
-//		PrintWriter out = response.getWriter();
 		
 		String uid = request.getParameter("uid");
 		String pwd = request.getParameter("pwd");
@@ -64,14 +63,6 @@ public class RegisterServlet extends HttpServlet {
 			System.out.print("이미 존재하는 아이디입니다.");
 			response.sendRedirect("jsp/member/registerMember.jsp");
 		}
-		
-//		if (uid.equals("uid")) {
-//			out.print("이미 존재하는 아이디입니다.");
-//			response.sendRedirect("jsp/member/registerMember.jsp");
-//		} else {
-//			out.print("회원가입 되었습니다.");
-//			response.sendRedirect("jsp/member/loginForm.jsp");
-//		}
 	}
 
 	/**

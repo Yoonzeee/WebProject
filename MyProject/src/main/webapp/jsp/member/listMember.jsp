@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="memberManagement.MemberBean"%>
+<%@ page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+String uid = (String) session.getAttribute("uid");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,28 +13,46 @@
 <title>listMember</title>
 </head>
 <body>
-<h2>회원목록들</h2>
-	<form name="frmList" method="get" action="list" encType="utf-8">
-	<table border=1>
-	<tr>
-		<td>아이디</td>
-		<td>이름</td>
-		<td>나이</td>
-		<td>핸드폰번호</td>
-		<td>이메일</td>
-		<td>가입일자</td>
-	</tr>
-	<c:forEach items="${members}" var="member">
-		<tr>
-			<td>${member.uid}</td>
-			<td>${member.pwd}</td>
-			<td>${member.name}</td>
-			<td>${member.phone}</td>
-			<td>${member.email}</td>
-			<td>${member.joinDate}</td>
-		</tr>
-		</c:forEach>
-</table>
+	<h2 class="header"><%=uid%>님 안녕하세요~~~!!
+	</h2>
+	<h2>회원목록</h2>
+	<form name="frmList" method="get" action="<c:url value='list'/>"
+		encType="utf-8">
+		<table border="1">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>아이디</th>
+					<th>비밀번호</th>
+					<th>이름</th>
+					<th>핸드폰번호</th>
+					<th>이메일</th>
+					<th>가입일</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<c:set var="i" value="1" />
+				<c:set var="i">1</c:set>
+
+				<c:forEach var="memberBean" items="${listMembers}"
+					varStatus="listMembersStatus">
+					<tr
+						class="${listMembersStatus.count % 2 == 0 ? 'trEven' : 'trOdd'}">
+
+						<td>${listMembersStatus.count}</td>
+						<td>${memberBean.uid}</td>
+						<td>${memberBean.pwd}</td>
+						<td>${memberBean.name}</td>
+						<td>${memberBean.phone}</td>
+						<td>${memberBean.email}</td>
+						<td>${memberBean.joinDate}</td>
+						<c:set var="i">${i+1}</c:set>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+
 	</form>
 </body>
 </html>
