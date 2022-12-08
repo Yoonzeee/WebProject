@@ -4,22 +4,28 @@
 <%
 String uid = (String)session.getAttribute("uid");
 String pwd = (String)session.getAttribute("pwd");
+String name = (String)session.getAttribute("name");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>searchPwdForm</title>
+<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 </head>
-<body>
-<h2 class="header"><%= uid %>님 안녕하세요~~~!!</h2>
-<h2>비밀번호 찾기</h2>
-
-	<form name="frmSearchPwdForm" method="post" action="<c:url value='/search'/>" encType="utf-8">
-	아이디: <input type="text" id="uid" name="uid"><br>
-	핸드폰번호: <input type="text" id="phone" name="phone"><br>
-	<input type="submit" value="비밀번호 찾기">
-    <input type="reset" value="다시입력">
-	</form>
+<body><%-- 
+<h2 class="header"><%= name %>님 안녕하세요~~~!!</h2> --%>
+<h2 class="head">비밀번호 찾기</h2>
+	<div class="searchPwd-form">
+		<form name="frmSearchPwdForm" method="post" action="<c:url value='/search'/>" encType="utf-8">
+		<input type="text" id="uid" name="uid" class="text-field" placeholder="아이디">
+		<input type="text" id="phone" name="phone" class="text-field" placeholder="휴대전화">
+		<input type="submit" value="찾기" class="btn">
+		</form>
+	</div>
+	<div class="links">
+		<a href="loginForm.jsp">돌아가기</a>
+	</div>
 </body>
 </html>

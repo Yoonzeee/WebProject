@@ -6,9 +6,66 @@
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
+ul {list-style: none}
+a {text-decoration: none}
+
+header{
+    height: 95px;
+    background-color: #2d3a4b;
+    position: relative;
+}
+
+#logo{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+ 
+}
+
+#top_menu{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    color: white;
+}
+ 
+#top_menu a{color: white;}
+ 
+nav{
+    position: absolute;
+    bottom: 10px;
+    left: 220px;
+    font-size: 16px;
+}
+ 
+nav li{
+    display: inline;
+    margin-left: 30px;
+}
+ 
+nav li a{color: white;}
+ 
+#content li{
+    display: inline;
+    margin-left: 50px;
+}
+
+footer{
+    height: 90px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+ 
+/* 전체 페이지가 가운데로 오도록 */
+#page{width: 820px; margin: 0px auto;}
+
 body{
 	background-color: mistyRose;
 	margin: 0;
+}
+
+.head {
 	text-align: center;
 }
 
@@ -19,6 +76,42 @@ body{
 	background-color: white;
 	padding: 20px;
 	margin: 0 auto;
+}
+
+
+
+.searchPwd-form {
+	width: 300px;
+	border-color: black;
+	border-radius: 5px;
+	background-color: white;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+table.type03 {
+	border-collapse: collapse;
+  	text-align: center;
+  	line-height: 1.5;
+  	border-top: 1px solid #ccc;
+  	border-left: 3px solid #369;
+  	margin : 20px 10px;
+}
+table.type03 th {
+	width: 147px;
+  	padding: 10px;
+  	font-weight: bold;
+  	vertical-align: top;
+  	color: #153d73;
+  	border-right: 1px solid #ccc;
+  	border-bottom: 1px solid #ccc;
+}
+table.type03 td {
+  	width: 349px;
+  	padding: 10px;
+  	vertical-align: top;
+  	border-right: 1px solid #ccc;
+  	border-bottom: 1px solid #ccc;	
 }
 
 .text-field {
@@ -40,11 +133,12 @@ body{
 }
 
 .links {
-	
+	text-align: center;
 }
 
 .links a {
-	font-size: 12px;
 	color: gray;
+	font-size: 12px;
 	margin: 0 auto;
+	
 }

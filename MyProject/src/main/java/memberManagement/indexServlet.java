@@ -15,14 +15,14 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class myPageServlet
  */
-@WebServlet("/myPage")
-public class myPageServlet extends HttpServlet {
+@WebServlet("/index")
+public class indexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public myPageServlet() {
+	public indexServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -45,12 +45,12 @@ public class myPageServlet extends HttpServlet {
 		String uid = (String)session.getAttribute("uid");
 		
 		MemberDAO dao = new MemberDAO();
+		System.out.println(dao.listMembers());
 
 		// jsp 연결을 위한 연결!
-		request.setAttribute("myPage", dao.myPage(uid));
-		System.out.println(uid);
+		request.setAttribute("index", dao.myPage(uid));
 
-		RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/member/myPage.jsp");
+		RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/member/index.jsp");
 		dispatch.forward(request, response);
 	}
 

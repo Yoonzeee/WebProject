@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String uid = (String) session.getAttribute("uid");
+String name = (String) session.getAttribute("name");
 %>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,7 @@ String uid = (String) session.getAttribute("uid");
 <title>myPage</title>
 </head>
 <body>
-<h2 class="header">${memberBean.uid}님 안녕하세요~~~!!
-	</h2>
+<h2 class="header">${myPage.name}님 안녕하세요~~~!!</h2>
 	<h2>마이페이지</h2>
 	<form name="frmList" method="get" action="<c:url value='list'/>"
 		encType="utf-8">
@@ -32,20 +32,13 @@ String uid = (String) session.getAttribute("uid");
 
 				<c:set var="i" value="1" />
 				<c:set var="i">1</c:set>
-
-				<c:forEach var="memberBean" items="${myPage}"
-					varStatus="listMembersStatus">
-					<tr
-						class="${listMembersStatus.count % 2 == 0 ? 'trEven' : 'trOdd'}">
-
-						<td>${memberBean.uid}</td>
-						<td>${memberBean.name}</td>
-						<td>${memberBean.phone}</td>
-						<td>${memberBean.email}</td>
-						<td>${memberBean.joinDate}</td>
-						<c:set var="i">${i+1}</c:set>
+					<tr>
+						<td>${myPage.uid}</td>
+						<td>${myPage.name}</td>
+						<td>${myPage.phone}</td>
+						<td>${myPage.email}</td>
+						<td>${myPage.joinDate}</td>
 					</tr>
-				</c:forEach>
 			</tbody>
 		</table>
 

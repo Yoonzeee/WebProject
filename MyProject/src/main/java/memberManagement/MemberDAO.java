@@ -260,8 +260,8 @@ public class MemberDAO {
 		return list;
 	}
 
-	public List<MemberBean> myPage(String uid) {
-		List<MemberBean> list = new ArrayList<>();
+	public MemberBean myPage(String uid) {
+		MemberBean bean = new MemberBean();
 		try {
 			// connDB();
 			conn = dataFactory.getConnection();
@@ -273,10 +273,9 @@ public class MemberDAO {
 			
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				MemberBean bean = new MemberBean(rs.getString("uid"), rs.getString("pwd"), rs.getString("name"),
+				bean = new MemberBean(rs.getString("uid"), rs.getString("pwd"), rs.getString("name"),
 						rs.getString("phone"), rs.getString("email"), rs.getDate("joinDate"));
 				System.out.println(bean);
-				list.add(bean);
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -288,7 +287,7 @@ public class MemberDAO {
 			} catch (Exception e) {
 			}
 		}
-		return list;
+		return bean;
 	}
 
 

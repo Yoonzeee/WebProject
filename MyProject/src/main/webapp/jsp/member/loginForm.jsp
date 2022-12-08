@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 </head>
 <body>
-<h2>로그인</h2>
+<h2 class="head">로그인</h2>
 	<div class="login-form">
 		<form name="frmLogin" method="post" action="<c:url value='/login'/>" encType="utf-8">
 			<input type="text" id="uid" name="uid" class="text-field" placeholder="아이디">
@@ -21,7 +21,8 @@
 	</div>
 	
 	<div class="links">
-		<a href="searchPwdForm.jsp">비밀번호를 잊어버리셨나요?</a>
+		<a href="searchPwdForm.jsp">비밀번호 찾을래??</a><br/>
+		<a href="registerMember.jsp">회원가입 할래??</a>
 	</div>
 </body>
 </html>

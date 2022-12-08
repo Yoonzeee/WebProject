@@ -64,8 +64,10 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("uid", bean.getUid());
 				session.setAttribute("name", bean.getName());
 				
+				// 메인메뉴
+				response.sendRedirect("jsp/member/index.jsp");
 				// 회원수정
-				response.sendRedirect("jsp/member/updateMember.jsp");
+//				response.sendRedirect("jsp/member/updateMember.jsp");
 //				// 회원탈퇴
 //				response.sendRedirect("jsp/member/deleteMember.jsp");
 //				// 가입한 회원 목록
