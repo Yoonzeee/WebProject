@@ -77,6 +77,9 @@ public class LoginServlet extends HttpServlet {
 //				// 마이페이지
 //				response.sendRedirect("myPage");
 //				out.print("안녕하세요 " + uid +" 님!!!");
+				
+				// 게시판 목록
+//				response.sendRedirect("Boardlist");
 			} else {
 				response.sendRedirect("jsp/member/loginForm.jsp");
 			}

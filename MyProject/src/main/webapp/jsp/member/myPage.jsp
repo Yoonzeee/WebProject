@@ -29,7 +29,6 @@ String name = (String) session.getAttribute("name");
 				</tr>
 			</thead>
 			<tbody>
-
 				<c:set var="i" value="1" />
 				<c:set var="i">1</c:set>
 					<tr>

@@ -25,14 +25,14 @@ String name = (String) session.getAttribute("name");
             <div id="top_menu">
                 <a href="<c:url value='/myPage'/>">마이페이지</a> | 
                 <a href="<c:url value='updateMember.jsp'/>">정보수정</a> |
-                <a href="<c:url value='searchPwdForm.jsp'/>">회원검색</a> |
+                <a href="<c:url value='/list'/>">회원검색</a> |
                 <a href="<c:url value='deleteMember.jsp'/>">회원탈퇴</a> |
                 <a href="#">로그아웃</a> 
             </div>
- 
+             
             <nav>
                 <ul>
-                    <li><a href="#">BOARD</a></li>
+                    <li><a href="<c:url value='/Boardlist'/>">BOARD</a></li>
                     <li><a href="#">CHAT</a></li>
                 </ul>
             </nav>

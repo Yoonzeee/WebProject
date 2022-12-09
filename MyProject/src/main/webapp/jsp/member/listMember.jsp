@@ -16,8 +16,7 @@ String uid = (String) session.getAttribute("uid");
 	<h2 class="header"><%=uid%>님 안녕하세요~~~!!
 	</h2>
 	<h2>회원목록</h2>
-	<form name="frmList" method="get" action="<c:url value='list'/>"
-		encType="utf-8">
+	<form name="frmList" method="get" action="<c:url value='list'/>" encType="utf-8">
 		<table border="1">
 			<thead>
 				<tr>
@@ -36,8 +35,7 @@ String uid = (String) session.getAttribute("uid");
 				<c:set var="i">1</c:set>
 
 				<c:forEach var="memberBean" items="${listMembers}" varStatus="listMembersStatus">
-					<tr
-						class="${listMembersStatus.count % 2 == 0 ? 'trEven' : 'trOdd'}">
+					<tr class="${listMembersStatus.count % 2 == 0 ? 'trEven' : 'trOdd'}">
 
 						<td>${listMembersStatus.count}</td>
 						<td>${memberBean.uid}</td>

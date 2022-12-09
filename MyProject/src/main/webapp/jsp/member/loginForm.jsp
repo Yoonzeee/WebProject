@@ -16,7 +16,6 @@
 			<input type="text" id="uid" name="uid" class="text-field" placeholder="아이디">
 			<input type="password" id="pwd" name="pwd" class="text-field" placeholder="비밀번호">
 			<input type="submit" value="로그인" class="btn">
-<!-- 	    	<input type="reset" value="다시입력" class="btn"> -->
 		</form>
 	</div>
 	

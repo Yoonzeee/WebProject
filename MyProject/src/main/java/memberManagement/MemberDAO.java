@@ -32,13 +32,12 @@ public class MemberDAO {
 		MemberBean bean = new MemberBean();
 		try {
 			conn = dataFactory.getConnection();
-			String query = "select * from web_member where uid=? and pwd=?";
+			String query = "select * from web_member where uid=?";
 			System.out.println("로그인 시작~");
 			System.out.println("prepareStatememt: " + query);
 
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uid);
-			pstmt.setString(2, pwd);
 
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -87,7 +86,6 @@ public class MemberDAO {
 
 	// 회원가입
 	public void registerMember(String uid, String pwd, String name, String phone, String email) {
-
 		try {
 			conn = dataFactory.getConnection();
 			String selectQuery = "select * from web_member where uid=?";
@@ -182,7 +180,6 @@ public class MemberDAO {
 				}
 				rs.close();
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
