@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="boardManagement.BoardBean"%>
+<%@ page import="boardManagement.BoardDAO"%>
+<%@ page import="java.util.List"%>
 <%@ page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
@@ -17,7 +19,7 @@ String uid = (String) session.getAttribute("uid");
 <form name="frmGetPost" method="post" action="<c:url value='/postBoard'/>" encType="utf-8">
 	<h1>게시물</h1>
 	<h2>제목</h2>
-		<input type="hidden" id="bno" name="bno" value="${getPost.bno}">
+		<input type="text" id="bno" name="bno" value=<%= bno %>>
 		<div style="background-color: #eeeeee">${getPost.title}</div>
 	<h2>작성자</h2>
 		<div style="background-color: #eeeeee">${getPost.uid}</div>
@@ -33,7 +35,7 @@ String uid = (String) session.getAttribute("uid");
 		<input type="button" value="목록" onClick="location.href='<c:url value='/Boardlist'/>'">
 		<c:if test="${uid eq getPost.uid }">
 		<input type="button" value="수정" onClick="location.href='/MyProject/jsp/board/updatePost.jsp'">
-		<input type="button" value="삭제" onClick="location.href='<c:url value='/deletePost'/>'">
+		<input type="button" value="삭제" onClick="location.href='/MyProject/jsp/board/deletePost.jsp'">
 	</c:if>
 	</div>
 </form>

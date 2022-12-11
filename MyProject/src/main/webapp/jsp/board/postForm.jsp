@@ -39,7 +39,7 @@ String uid = (String) session.getAttribute("uid");
 	<label>작성자</label>
 	<input type="text" id="uid" name="uid" class="text-field" value=<%= uid %> readonly><br/>
 	<label>내용</label>
-	<textarea name="content" id="content"></textarea>
+	<textarea name="content" id="editor"></textarea>
 	
 	<input type="submit" value="전송">
 	<input type="button" value="목록으로" onClick="location.href='<c:url value='/Boardlist'/>'">

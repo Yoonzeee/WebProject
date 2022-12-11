@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class DeletePostServlet
  */
-@WebServlet("/deletePost")
+@WebServlet("/board/deletePost")
 public class DeletePostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,11 +30,14 @@ public class DeletePostServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
+		System.out.println("/deletePost servlet 들어왔");
+		
 		BoardDAO dao = new BoardDAO();
 		
 		String bno = request.getParameter("bno");
+		dao.deletePost(bno);
 		
-//		BoardBean bean = dao.deletePost(bno);
+		response.sendRedirect("/MyProject/Boardlist");
 	}
 
 	/**
