@@ -40,7 +40,9 @@ String name = (String) session.getAttribute("name");
 					</tr>
 			</tbody>
 		</table>
-
+		<div>
+			<input type="button" value="목록" onClick="location.href='<c:url value='jsp/member/index.jsp'/>'">
+		</div>
 	</form>
 </body>
 </html>

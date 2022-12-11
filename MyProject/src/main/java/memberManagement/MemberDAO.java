@@ -257,6 +257,7 @@ public class MemberDAO {
 		return list;
 	}
 
+	// 마이페이지
 	public MemberBean myPage(String uid) {
 		MemberBean bean = new MemberBean();
 		try {

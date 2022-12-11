@@ -3,7 +3,7 @@ package boardManagement;
 import java.sql.Date;
 
 public class BoardBean {
-	private int bno;
+	private String bno;
 	private String category;
 	private String title;
 	private String content;
@@ -11,7 +11,7 @@ public class BoardBean {
 	private Date writeDate;
 	private int viewCount;
 	
-	public BoardBean(int bno, String category, String title, String content, String uid, Date writeDate, int viewCount) {
+	public BoardBean(String bno, String category, String title, String content, String uid, Date writeDate, int viewCount) {
 		super();
 		this.bno = bno;
 		this.category = category;
@@ -26,10 +26,10 @@ public class BoardBean {
 		super();
 	}
 	
-	public int getBno() {
+	public String getBno() {
 		return bno;
 	}
-	public void setBno(int bno) {
+	public void setBno(String bno) {
 		this.bno = bno;
 	}
 	
@@ -74,4 +74,6 @@ public class BoardBean {
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
+
+	
 }

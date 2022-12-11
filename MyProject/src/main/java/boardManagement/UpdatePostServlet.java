@@ -1,9 +1,10 @@
-package memberManagement;
+package boardManagement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
@@ -11,18 +12,19 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UpdateServlet
  */
-@WebServlet("/update")
-public class UpdateServlet extends HttpServlet {
+@WebServlet("/board/updatePost")
+public class UpdatePostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateServlet() {
+    public UpdatePostServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,20 +49,31 @@ public class UpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+
+		BoardDAO dao = new BoardDAO();
 		
-		MemberDAO dao = new MemberDAO();
-		PrintWriter out = response.getWriter();
+		String bno = request.getParameter("bno");
+		String title = request.getParameter("title"); 
+		String category = request.getParameter("category");
+		String content = request.getParameter("content");
 		
-		String uid = request.getParameter("uid");
-		String pwd = request.getParameter("pwd");
-		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
-		MemberBean bean = dao.updateMember(uid, pwd, name, phone, email);
+		System.out.println(bno + title + category + content);
 		
-		response.sendRedirect("jsp/member/index.jsp");
+		BoardBean bean = dao.updatePost(bno, title, category, content);
 		
-		// if?
+//		HttpSession session = request.getSession();
+//		session.setAttribute("uid", bean.getUid());
+//		session.setAttribute("bno", bean.getBno());
+		// jsp 연결을 위한 연결!
+		
+//		request.setAttribute("updatePost", dao.updatePost(bno, title, category, content));
+		
+//		RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/board/updatePost.jsp");
+		response.sendRedirect("/MyProject/Boardlist");
+		
+//		dispatch.forward(request, response);
+		
+		
 	}
 
 	/**

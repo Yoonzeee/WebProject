@@ -19,4 +19,24 @@
     <servlet-name>PostServlet</servlet-name>
     <url-pattern>/post</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdatePostServlet</display-name>
+    <servlet-name>UpdatePostServlet</servlet-name>
+    <servlet-class>boardManagement.UpdatePostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePostServlet</servlet-name>
+    <url-pattern>/UpdatePostServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeletePostServlet</display-name>
+    <servlet-name>DeletePostServlet</servlet-name>
+    <servlet-class>boardManagement.DeletePostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePostServlet</servlet-name>
+    <url-pattern>/DeletePostServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

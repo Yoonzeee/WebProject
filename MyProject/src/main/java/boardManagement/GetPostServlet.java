@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ListServlet
@@ -45,13 +46,25 @@ public class GetPostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDAO dao = new BoardDAO();
-		String bno = request.getParameter("bno"); 
+		BoardBean bean = new BoardBean();
+		HttpSession session = request.getSession();
 		
+		String bno = request.getParameter("bno"); 
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		bean = dao.getPost(bno, title, content);
+		System.out.println(bno + title + content);
+		
+		session.setAttribute("bno", bean.getBno());
+		session.setAttribute("title", bean.getTitle());
+		session.setAttribute("content", bean.getContent());	
+//		
 		// jsp 연결을 위한 연결!
-		request.setAttribute("getPost", dao.getPost(bno));
-
+		request.setAttribute("getPost", dao.getPost(bno, title, content));
+	
 		RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/board/getPost.jsp");
 		dispatch.forward(request, response);
+		
 	}
 
 	/**

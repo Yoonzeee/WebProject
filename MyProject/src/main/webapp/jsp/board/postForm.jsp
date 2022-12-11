@@ -30,16 +30,16 @@ String uid = (String) session.getAttribute("uid");
 
 <form name="frmPost" method="post" action="<c:url value='/postBoard'/>" encType="utf-8">
 	<label>제목</label>
-	<input type="text" name="title" id="title" ><br/>
+	<input type="text" name="title" id="title"><br/>
 	<select id="category" name="category">
-		<option value="common">일반</option>
-		<option value="notice">공지</option>
-		<option value="qna">Q&A</option>
+		<option value="일반">일반</option>
+		<option value="공지">공지</option>
+		<option value="Q&A">Q&A</option>
 	</select>
-	<label>작성자</label> 
+	<label>작성자</label>
 	<input type="text" id="uid" name="uid" class="text-field" value=<%= uid %> readonly><br/>
 	<label>내용</label>
-	<textarea name="content" id="editor"></textarea>
+	<textarea name="content" id="content"></textarea>
 	
 	<input type="submit" value="전송">
 	<input type="button" value="목록으로" onClick="location.href='<c:url value='/Boardlist'/>'">

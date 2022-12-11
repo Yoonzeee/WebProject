@@ -30,8 +30,7 @@ String name = (String) session.getAttribute("name");
 					<c:set var="i" value="1" />
 					<c:set var="i">1</c:set>
 
-					<c:forEach var="memberBean" items="${searchPwd}"
-						varStatus="searchPwdStatus">
+					<c:forEach var="memberBean" items="${searchPwd}" varStatus="searchPwdStatus">
 						<tr>
 							<td>${memberBean.uid}</td>
 							<td>${memberBean.pwd}</td>

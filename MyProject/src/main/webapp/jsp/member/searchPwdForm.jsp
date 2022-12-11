@@ -14,8 +14,7 @@ String name = (String)session.getAttribute("name");
 <link rel="stylesheet" href="css/styles.css">
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 </head>
-<body><%-- 
-<h2 class="header"><%= name %>님 안녕하세요~~~!!</h2> --%>
+<body>
 <h2 class="head">비밀번호 찾기</h2>
 	<div class="searchPwd-form">
 		<form name="frmSearchPwdForm" method="post" action="<c:url value='/search'/>" encType="utf-8">

@@ -56,6 +56,8 @@ public class DeleteServlet extends HttpServlet {
 		String pwd1= request.getParameter("pwd1");
 		MemberBean bean = dao.deleteMember(uid, pwd, pwd1);
 		
+		// 로그인창으로~
+		response.sendRedirect("jsp/member/loginForm.jsp");
 	}
 
 	/**
