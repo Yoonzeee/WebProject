@@ -9,6 +9,7 @@ String bno = (String)session.getAttribute("bno");
 String uid = (String)session.getAttribute("uid");
 String title = (String)session.getAttribute("title");
 String content = (String)session.getAttribute("content");
+int admin = (int) session.getAttribute("admin");
 %>
 <!DOCTYPE html>
 <html>
@@ -30,7 +31,28 @@ String content = (String)session.getAttribute("content");
 <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/translations/ko.js"></script>
 </head>
 <body>
-
+<header>
+            <div id="logo">
+                <img src="#" alt="Logo">
+            </div>
+ 
+            <div id="top_menu">
+                <a href="<c:url value='/myPage'/>">마이페이지</a> | 
+                <a href="/MyProject/jsp/member/updateMember.jsp">정보수정</a> |
+                <c:if test="${admin eq 1}">
+               		<a href="<c:url value='/list'/>">회원검색</a> |
+               	</c:if>
+                <a href="/MyProject/jsp/member/deleteMember.jsp">회원탈퇴</a> |
+                <a href="<c:url value='/logout'/>">로그아웃</a> 
+            </div>
+             
+            <nav>
+                <ul>
+                    <li><a href="<c:url value='/Boardlist'/>">BOARD</a></li>
+                    <li><a href="#">CHAT</a></li>
+                </ul>
+            </nav>
+        </header>
 <h2>게시물 수정</h2>
 
 	<form name="frmUpdatePost" method="post" action="<c:url value='/board/updatePost'/>" encType="utf-8">

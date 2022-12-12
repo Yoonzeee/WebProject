@@ -44,7 +44,6 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
@@ -61,25 +60,32 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("비밀번호: " + pwd);
 		
 			if(bean != null && bean.getUid() != null) {
-				session.setAttribute("uid", bean.getUid());
-				session.setAttribute("name", bean.getName());
-				
-				// 메인메뉴
-				response.sendRedirect("jsp/member/index.jsp");
-				// 회원수정
-//				response.sendRedirect("jsp/member/updateMember.jsp");
-//				// 회원탈퇴
-//				response.sendRedirect("jsp/member/deleteMember.jsp");
-//				// 가입한 회원 목록
-//				response.sendRedirect("list");
-				// 비밀번호 찾기
-//				response.sendRedirect("jsp/member/searchPwdForm.jsp");
-//				// 마이페이지
-//				response.sendRedirect("myPage");
-//				out.print("안녕하세요 " + uid +" 님!!!");
-				
-				// 게시판 목록
-//				response.sendRedirect("Boardlist");
+				if(bean.getAvailable() == 1) {
+					session.setAttribute("uid", bean.getUid());
+					session.setAttribute("name", bean.getName());
+					session.setAttribute("admin", bean.getAdmin());
+					session.setAttribute("available", bean.getAvailable());
+					// 메인메뉴
+					response.sendRedirect("jsp/member/index.jsp");
+					System.out.println("로그인 가능한 멤버입니다.");
+					// 회원수정
+//					response.sendRedirect("jsp/member/updateMember.jsp");
+//					// 회원탈퇴
+//					response.sendRedirect("jsp/member/deleteMember.jsp");
+//					// 가입한 회원 목록
+//					response.sendRedirect("list");
+					// 비밀번호 찾기
+//					response.sendRedirect("jsp/member/searchPwdForm.jsp");
+//					// 마이페이지
+//					response.sendRedirect("myPage");
+//					out.print("안녕하세요 " + uid +" 님!!!");
+					
+					// 게시판 목록
+//					response.sendRedirect("Boardlist");
+				} else {
+					response.sendRedirect("jsp/member/loginForm.jsp");
+					System.out.println("로그인 불가능한 멤버입니다.");
+				}
 			} else {
 				response.sendRedirect("jsp/member/loginForm.jsp");
 			}

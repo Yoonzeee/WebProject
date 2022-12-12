@@ -11,32 +11,12 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>PostServlet</display-name>
-    <servlet-name>PostServlet</servlet-name>
-    <servlet-class>boardManagement.PostServlet</servlet-class>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>memberManagement.LogoutServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>PostServlet</servlet-name>
-    <url-pattern>/post</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>UpdatePostServlet</display-name>
-    <servlet-name>UpdatePostServlet</servlet-name>
-    <servlet-class>boardManagement.UpdatePostServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UpdatePostServlet</servlet-name>
-    <url-pattern>/UpdatePostServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>DeletePostServlet</display-name>
-    <servlet-name>DeletePostServlet</servlet-name>
-    <servlet-class>boardManagement.DeletePostServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeletePostServlet</servlet-name>
-    <url-pattern>/DeletePostServlet</url-pattern>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
 </web-app>

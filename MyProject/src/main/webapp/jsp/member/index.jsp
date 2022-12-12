@@ -5,6 +5,7 @@
 String uid = (String) session.getAttribute("uid");
 String pwd = (String) session.getAttribute("pwd");
 String name = (String) session.getAttribute("name");
+int admin = (int) session.getAttribute("admin");
 %>
 <!DOCTYPE html>
 <html>
@@ -24,10 +25,12 @@ String name = (String) session.getAttribute("name");
  
             <div id="top_menu">
                 <a href="<c:url value='/myPage'/>">마이페이지</a> | 
-                <a href="<c:url value='updateMember.jsp'/>">정보수정</a> |
-                <a href="<c:url value='/list'/>">회원검색</a> |
-                <a href="<c:url value='deleteMember.jsp'/>">회원탈퇴</a> |
-                <a href="#">로그아웃</a> 
+                <a href="/MyProject/jsp/member/updateMember.jsp">정보수정</a> |
+                <c:if test="${admin eq 1}">
+               		<a href="<c:url value='/list'/>">회원검색</a> |
+               	</c:if>
+                <a href="/MyProject/jsp/member/deleteMember.jsp">회원탈퇴</a> |
+                <a href="<c:url value='/logout'/>">로그아웃</a> 
             </div>
              
             <nav>
@@ -36,7 +39,6 @@ String name = (String) session.getAttribute("name");
                     <li><a href="#">CHAT</a></li>
                 </ul>
             </nav>
- 
         </header>
  
         <article id="content">

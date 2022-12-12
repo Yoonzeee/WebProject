@@ -5,6 +5,7 @@
 String uid = (String)session.getAttribute("uid");
 String pwd = (String)session.getAttribute("pwd");
 String name = (String)session.getAttribute("name");
+int admin = (int)session.getAttribute("admin");
 %>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,30 @@ String name = (String)session.getAttribute("name");
 <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
 </head>
 <body>
+
+	<header>
+             <div id="logo">
+                <img src="#" alt="Logo">
+            </div>
+ 
+            <div id="top_menu">
+                <a href="<c:url value='/myPage'/>">마이페이지</a> | 
+                <a href="/MyProject/jsp/member/updateMember.jsp">정보수정</a> |
+                <c:if test="${admin eq 1}">
+               		<a href="<c:url value='/list'/>">회원검색</a> |
+               	</c:if>
+                <a href="/MyProject/jsp/member/deleteMember.jsp">회원탈퇴</a> |
+                <a href="<c:url value='/logout'/>">로그아웃</a> 
+            </div>
+             
+            <nav>
+                <ul>
+                    <li><a href="<c:url value='/Boardlist'/>">BOARD</a></li>
+                    <li><a href="#">CHAT</a></li>
+                </ul>
+            </nav>
+        </header>
+        
 <h2 class="head">비밀번호 찾기</h2>
 	<div class="searchPwd-form">
 		<form name="frmSearchPwdForm" method="post" action="<c:url value='/search'/>" encType="utf-8">

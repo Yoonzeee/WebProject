@@ -9,8 +9,10 @@ public class MemberBean {
 	private String phone;
 	private String email;
 	private Date joinDate;
+	private int available;
+	private int admin;
 	
-	public MemberBean(String uid, String pwd, String name, String phone, String email, Date joinDate) {
+	public MemberBean(String uid, String pwd, String name, String phone, String email, Date joinDate, int available, int admin) {
 		super();
 		this.uid = uid;
 		this.pwd = pwd;
@@ -18,14 +20,8 @@ public class MemberBean {
 		this.phone = phone;
 		this.email = email;
 		this.joinDate = joinDate;
-	}
-	public MemberBean(String uid, String pwd, String name, String phone, String email) {
-		super();
-		this.uid = uid;
-		this.pwd = pwd;
-		this.name = name;
-		this.phone = phone;
-		this.email = email;
+		this.available = available;
+		this.admin = admin;
 	}
 	
 	public MemberBean() {
@@ -69,6 +65,17 @@ public class MemberBean {
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
-	
+	public int getAvailable() {
+		return available;
+	}
+	public void setAvailable(int available) {
+		this.available = available;
+	}
+	public int getAdmin() {
+		return admin;
+	}
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
 	
 }

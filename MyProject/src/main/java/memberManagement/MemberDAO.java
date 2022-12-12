@@ -50,6 +50,8 @@ public class MemberDAO {
 					bean.setName(rs.getString("name"));
 					bean.setPhone(rs.getString("phone"));
 					bean.setEmail(rs.getString("email"));
+					bean.setAvailable(rs.getInt("available"));
+					bean.setAdmin(rs.getInt("admin"));
 
 					// 여기 쿼리문 작성 & 삽입할 데이터들 바꿔!!!
 					String loghistoryQuery = "{call login_history(?, ?, ?, ?)}";
@@ -206,7 +208,7 @@ public class MemberDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MemberBean bean = new MemberBean(rs.getString("uid"), rs.getString("pwd"), rs.getString("name"),
-						rs.getString("phone"), rs.getString("email"), rs.getDate("joinDate"));
+						rs.getString("phone"), rs.getString("email"), rs.getDate("joinDate"), rs.getInt("available"), rs.getInt("admin"));
 				System.out.println(bean);
 				list.add(bean);
 			}
@@ -239,7 +241,7 @@ public class MemberDAO {
 				String memberPhone = rs.getString("phone");
 				if(memberPhone.equals(phone)) {
 					MemberBean bean = new MemberBean(rs.getString("uid"), rs.getString("pwd"), rs.getString("name"),
-							rs.getString("phone"), rs.getString("email"), rs.getDate("joinDate"));
+							rs.getString("phone"), rs.getString("email"), rs.getDate("joinDate"), rs.getInt("available"), rs.getInt("admin"));
 					System.out.println(bean);
 					list.add(bean);
 				}
@@ -272,8 +274,83 @@ public class MemberDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				bean = new MemberBean(rs.getString("uid"), rs.getString("pwd"), rs.getString("name"),
-						rs.getString("phone"), rs.getString("email"), rs.getDate("joinDate"));
+						rs.getString("phone"), rs.getString("email"), rs.getDate("joinDate"), rs.getInt("available"), rs.getInt("admin"));
 				System.out.println(bean);
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return bean;
+	}
+
+	public MemberBean adminDeleteMember(String uid) {
+		MemberBean bean = new MemberBean();
+		try {
+			conn = dataFactory.getConnection();
+			String query = "select * from web_member where uid=?";
+			System.out.println("회원 탈퇴 시작~");
+			System.out.println("prepareStatememt: " + query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, uid);
+
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String deleteQuery = "delete from web_member where uid=?";
+				System.out.println("prepareStatement: " + deleteQuery + uid );
+
+				pstmt = conn.prepareStatement(deleteQuery);
+				pstmt.setString(1, uid);
+				pstmt.executeUpdate();
+
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return bean;
+	}
+
+	public MemberBean adminLoginMember(String uid) {
+		MemberBean bean = new MemberBean();
+		try {
+			conn = dataFactory.getConnection();
+			String query = "select * from web_member where uid=?";
+			System.out.println("로그인 시작~");
+			System.out.println("prepareStatememt: " + query);
+
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, uid);
+
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int memberAvailable = rs.getInt("available");
+				
+				String adminLoginQuery = "update web_member set available=? where uid=? ";
+				pstmt = conn.prepareStatement(adminLoginQuery);
+				if (memberAvailable == 0) {					// 로그인 불가능한 상태
+					pstmt.setInt(1, 1); 					// 로그인 가능한 상태로 변경 (true = 1)
+					pstmt.setString(2, uid);
+					pstmt.executeQuery();
+					System.out.println("로그인 가능한 상태로 변경했습니다.");
+				} else { 									// 로그인 가능한 상태
+					pstmt.setInt(1, 0); 					// 로그인 불가능한 상태로 변경 (true = 0)
+					pstmt.setString(2, uid);
+					pstmt.executeQuery();
+					System.out.println("로그인 가능한 상태로 변경했습니다.");
+				}
 			}
 			rs.close();
 		} catch (Exception e) {
