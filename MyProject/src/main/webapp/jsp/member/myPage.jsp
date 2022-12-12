@@ -21,7 +21,7 @@ int admin = (int) session.getAttribute("admin");
 
 	<header>
              <div id="logo">
-                <img src="#" alt="Logo">
+                <img src="/MyProject/jsp/member/index.jsp" alt="Logo">
             </div>
  
             <div id="top_menu">

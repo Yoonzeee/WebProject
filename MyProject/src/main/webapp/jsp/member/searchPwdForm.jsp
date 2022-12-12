@@ -19,7 +19,7 @@ int admin = (int)session.getAttribute("admin");
 
 	<header>
              <div id="logo">
-                <img src="#" alt="Logo">
+                <img src="/MyProject/jsp/member/index.jsp" alt="Logo">
             </div>
  
             <div id="top_menu">
@@ -43,9 +43,9 @@ int admin = (int)session.getAttribute("admin");
 <h2 class="head">비밀번호 찾기</h2>
 	<div class="searchPwd-form">
 		<form name="frmSearchPwdForm" method="post" action="<c:url value='/search'/>" encType="utf-8">
-		<input type="text" id="uid" name="uid" class="text-field" placeholder="아이디">
-		<input type="text" id="phone" name="phone" class="text-field" placeholder="휴대전화">
-		<input type="submit" value="찾기" class="btn">
+			<input type="text" id="uid" name="uid" class="text-field" placeholder="아이디">
+			<input type="text" id="phone" name="phone" class="text-field" placeholder="휴대전화">
+			<input type="submit" value="찾기" class="btn">
 		</form>
 	</div>
 	<div class="links">

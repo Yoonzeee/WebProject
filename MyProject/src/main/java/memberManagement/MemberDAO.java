@@ -290,6 +290,7 @@ public class MemberDAO {
 		return bean;
 	}
 
+	// 관리자모드 회원삭제
 	public MemberBean adminDeleteMember(String uid) {
 		MemberBean bean = new MemberBean();
 		try {
@@ -323,6 +324,7 @@ public class MemberDAO {
 		return bean;
 	}
 
+	// 관리자 회원 로그인 관리
 	public MemberBean adminLoginMember(String uid) {
 		MemberBean bean = new MemberBean();
 		try {

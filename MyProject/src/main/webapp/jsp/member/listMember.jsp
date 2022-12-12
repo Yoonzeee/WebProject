@@ -21,7 +21,7 @@ int available = (int) session.getAttribute("available");
 
 	<header>
             <div id="logo">
-                <img src="#" alt="Logo">
+                <img src="/MyProject/jsp/member/index.jsp" alt="Logo">
             </div>
  
             <div id="top_menu">
@@ -91,7 +91,6 @@ int available = (int) session.getAttribute("available");
 				</c:forEach>
 			</tbody>
 		</table>
-
 	</form>
 </body>
 </html>

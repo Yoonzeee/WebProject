@@ -35,7 +35,7 @@ int admin = (int) session.getAttribute("admin");
 
 	<header>
             <div id="logo">
-                <img src="#" alt="Logo">
+                <img src="/MyProject/jsp/member/index.jsp" alt="Logo">
             </div>
  
             <div id="top_menu">
@@ -57,19 +57,19 @@ int admin = (int) session.getAttribute("admin");
         </header>
 
 <form name="frmPost" method="post" action="<c:url value='/postBoard'/>" encType="utf-8">
-	<label>제목</label>
-	<input type="text" name="title" id="title"><br/>
+	<label>작성자</label>
+	<input type="text" id="uid" name="uid" class="text-field" value=<%= uid %> readonly><br/>
 	<select id="category" name="category">
 		<option value="일반">일반</option>
 		<option value="공지">공지</option>
 		<option value="Q&A">Q&A</option>
 	</select>
-	<label>작성자</label>
-	<input type="text" id="uid" name="uid" class="text-field" value=<%= uid %> readonly><br/>
-	<label>내용</label>
+	<label>제목</label>
+	<input type="text" name="title" id="title"><br/>
+	<!-- <label>내용</label> -->
 	<textarea name="content" id="editor"></textarea>
 	
-	<input type="submit" value="전송">
+	<input type="submit" value="작성">
 	<input type="button" value="목록으로" onClick="location.href='<c:url value='/Boardlist'/>'">
 </form>
 <script>

@@ -1,53 +1,41 @@
 package boardManagement;
 
-import java.io.IOException;
-
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.Servlet;
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
- * Servlet implementation class ListServlet
+ * Servlet implementation class SearchListServlet
  */
-@WebServlet("/Boardlist")
-public class ListBoardServlet extends HttpServlet {
+@WebServlet("/SearchList")
+public class SearchListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListBoardServlet() {
+    public SearchListServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-	}
-
-	/**
-	 * @see Servlet#destroy()
-	 */
-	public void destroy() {
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDAO dao = new BoardDAO();
-//		System.out.println(dao.listBoard());
+		
+		String category = request.getParameter("category");
+		String findPost = request.getParameter("findPost");
 		
 		// jsp 연결을 위한 연결!
-		request.setAttribute("listBoards", dao.listBoard());
+		request.setAttribute("searchList", dao.searchList(category, findPost));
 
-		RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/board/listBoard.jsp");
+		RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/board/searchList.jsp");
 		dispatch.forward(request, response);
 	}
 
@@ -55,6 +43,7 @@ public class ListBoardServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

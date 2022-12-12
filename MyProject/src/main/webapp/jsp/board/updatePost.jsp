@@ -31,9 +31,9 @@ int admin = (int) session.getAttribute("admin");
 <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/translations/ko.js"></script>
 </head>
 <body>
-<header>
+	<header>
             <div id="logo">
-                <img src="#" alt="Logo">
+                <img src="/MyProject/jsp/member/index.jsp" alt="Logo">
             </div>
  
             <div id="top_menu">
@@ -52,7 +52,7 @@ int admin = (int) session.getAttribute("admin");
                     <li><a href="#">CHAT</a></li>
                 </ul>
             </nav>
-        </header>
+    </header>
 <h2>게시물 수정</h2>
 
 	<form name="frmUpdatePost" method="post" action="<c:url value='/board/updatePost'/>" encType="utf-8">

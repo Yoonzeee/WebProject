@@ -202,6 +202,54 @@ public class BoardDAO {
 		return bean;
 		
 	}
+
+	// 게시물 찾기
+	public List<BoardBean> searchList(String category, String findPost) {
+		List<BoardBean> list = new ArrayList<>();
+		try {
+			// category uid, title
+			System.out.println(category + findPost);
+			BoardBean bean;
+			conn = dataFactory.getConnection();
+			
+			if (category.equals("title")) {
+				System.out.println("category: " + category);
+				String titleSelectquery = "select * from web_board where title=?";
+				pstmt = conn.prepareStatement(titleSelectquery);
+				pstmt.setString(1, findPost);
+				
+				ResultSet rs = pstmt.executeQuery();
+				while (rs.next()) {
+					bean = new BoardBean(rs.getString("bno"), rs.getString("category"), rs.getString("title"),
+							rs.getString("content"), rs.getString("uid"), rs.getDate("writeDate"), rs.getInt("viewCount"));
+					System.out.println(bean);
+					list.add(bean);
+				}
+				rs.close();
+			} else if (category.equals("uid")) {
+				System.out.println("category: " + category);
+				String uidSelectQuery = "select * from web_board where uid like ?";
+				pstmt = conn.prepareStatement(uidSelectQuery);
+				pstmt.setString(1, "%"+findPost+"%");
+				
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					bean = new BoardBean(rs.getString("bno"), rs.getString("category"), rs.getString("title"),
+							rs.getString("content"), rs.getString("uid"), rs.getDate("writeDate"), rs.getInt("viewCount"));
+					System.out.println(bean);
+					list.add(bean);
+				}
+				rs.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (Exception e) {}
+		}
+		return list;
+	}
 	
 }
 
