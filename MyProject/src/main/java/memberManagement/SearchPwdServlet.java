@@ -44,6 +44,8 @@ public class SearchPwdServlet extends HttpServlet {
 
 		RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/member/searchPwd.jsp");
 		dispatch.forward(request, response);
+		
+		response.sendRedirect("jsp/member/loginForm.jsp");
 	}
 
 	/**

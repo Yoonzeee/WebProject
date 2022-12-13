@@ -16,6 +16,9 @@ int admin = (int) session.getAttribute("admin");
 <head>
 <meta charset="UTF-8">
 <title>updatePost</title>
+<link rel="stylesheet" href="<c:url value='/jsp/board/css/styles.css'/>">
+<link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+
 <style type="text/css">
 
 /* 넓이 높이 조절 */
@@ -33,14 +36,14 @@ int admin = (int) session.getAttribute("admin");
 <body>
 	<header>
             <div id="logo">
-                <img src="/MyProject/jsp/member/index.jsp" alt="Logo">
+            	<a style="color: white;" href="/MyProject/jsp/member/index.jsp">WebProject</a>
             </div>
  
             <div id="top_menu">
                 <a href="<c:url value='/myPage'/>">마이페이지</a> | 
                 <a href="/MyProject/jsp/member/updateMember.jsp">정보수정</a> |
                 <c:if test="${admin eq 1}">
-               		<a href="<c:url value='/list'/>">회원검색</a> |
+               		<a href="<c:url value='/list'/>">회원관리</a> |
                	</c:if>
                 <a href="/MyProject/jsp/member/deleteMember.jsp">회원탈퇴</a> |
                 <a href="<c:url value='/logout'/>">로그아웃</a> 
@@ -53,12 +56,13 @@ int admin = (int) session.getAttribute("admin");
                 </ul>
             </nav>
     </header>
+    
 <h2>게시물 수정</h2>
 
 	<form name="frmUpdatePost" method="post" action="<c:url value='/board/updatePost'/>" encType="utf-8">
 	
 		<label>제목</label>
-		<input type="text" id="bno" name="bno" class="text-field" value=<%= bno %> readonly><br/>
+		<input type="hidden" id="bno" name="bno" class="text-field" value=<%= bno %> readonly><br/>
 		<input type="text" name="title" id="title" class="text-field"  value=<%= title %>><br/>
 		<select id="category" name="category"> 
 			<option value="일반">일반</option>

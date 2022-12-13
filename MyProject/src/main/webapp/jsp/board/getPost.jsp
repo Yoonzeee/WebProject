@@ -23,14 +23,14 @@ int admin = (int) session.getAttribute("admin");
 
 		<header>
             <div id="logo">
-                <img src="/MyProject/jsp/member/index.jsp" alt="Logo">
+            	<a style="color: white;" href="/MyProject/jsp/member/index.jsp">WebProject</a>
             </div>
  
             <div id="top_menu">
                 <a href="<c:url value='/myPage'/>">마이페이지</a> | 
                 <a href="/MyProject/jsp/member/updateMember.jsp">정보수정</a> |
                 <c:if test="${admin eq 1}">
-               		<a href="<c:url value='/list'/>">회원검색</a> |
+               		<a href="<c:url value='/list'/>">회원관리</a> |
                	</c:if>
                 <a href="/MyProject/jsp/member/deleteMember.jsp">회원탈퇴</a> |
                 <a href="<c:url value='/logout'/>">로그아웃</a> 
@@ -47,7 +47,7 @@ int admin = (int) session.getAttribute("admin");
 <form name="frmGetPost" method="post" action="<c:url value='/postBoard'/>" encType="utf-8">
 	<h1>게시물</h1>
 	<h2>제목</h2>
-		<input type="text" id="bno" name="bno" value=<%= bno %>>
+		<input type="hidden" id="bno" name="bno" value=<%= bno %>>
 		<div style="background-color: #eeeeee">${getPost.title}</div>
 	<h2>작성자</h2>
 		<div style="background-color: #eeeeee">${getPost.uid}</div>

@@ -20,15 +20,14 @@ int admin = (int) session.getAttribute("admin");
 
 	<header>
             <div id="logo">
-            	<a href="/MyProject/jsp/member/index.jsp">WebProject</a>
-                <img src="/MyProject/jsp/member/index.jsp" alt="Logo">
+            	<a style="color: white;" href="/MyProject/jsp/member/index.jsp">WebProject</a>
             </div>
  
             <div id="top_menu">
                 <a href="<c:url value='/myPage'/>">마이페이지</a> | 
                 <a href="/MyProject/jsp/member/updateMember.jsp">정보수정</a> |
                 <c:if test="${admin eq 1}">
-               		<a href="<c:url value='/list'/>">회원검색</a> |
+               		<a href="<c:url value='/list'/>">회원관리</a> |
                	</c:if>
                 <a href="/MyProject/jsp/member/deleteMember.jsp">회원탈퇴</a> |
                 <a href="<c:url value='/logout'/>">로그아웃</a> 
@@ -42,7 +41,7 @@ int admin = (int) session.getAttribute("admin");
             </nav>
         </header>
  
-        <article id="content">
+        <!-- <article id="content">
             <section id="main">
                 <img src="#" alt="main img">
             </section>
@@ -58,7 +57,7 @@ int admin = (int) session.getAttribute("admin");
  
         <footer>
             <img src="#" alt="address">
-        </footer>
+        </footer> -->
 	
 	</div>
 
